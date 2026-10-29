@@ -1,0 +1,122 @@
+/* ===== Token warna (dari desain) ===== */
+:root {
+  --latar: #F2EEE4; --kartu: #FBF9F4; --tinta: #2A2A28; --redam: #6B675F;
+  --garis: #CFC9BB; --sel: #E4DFD2;
+  --kuning: #F5B921; --hijau: #1E7F63; --merah: #C8372D;
+  box-sizing: border-box;
+}
+*, *::before, *::after { box-sizing: inherit; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0; background: var(--latar); color: var(--tinta);
+  font: 400 16px/1.4 "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
+
+/* Area aman HP (notch & gesture bar) */
+.app {
+  max-width: 480px; margin: 0 auto; min-height: 100dvh;
+  padding: calc(28px + env(safe-area-inset-top, 0px)) 20px calc(120px + env(safe-area-inset-bottom, 0px));
+}
+h1 { margin: 24px 0 0; font-size: 32px; line-height: 1.1; letter-spacing: -.02em; font-weight: 800; }
+.sub { margin: 4px 0 0; font-size: 18px; color: var(--redam); }
+.lb { font-size: 12px; font-weight: 700; color: var(--redam); text-transform: uppercase; letter-spacing: .06em; }
+
+/* Warna kategori: dipakai kartu & agenda */
+.kuning { --w: var(--kuning); }
+.hijau  { --w: var(--hijau); }
+.gelap  { --w: var(--tinta); }
+
+/* ===== Beranda ===== */
+.atas { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--tinta); color: var(--kuning); display: grid; place-items: center; font-weight: 800; }
+.sapa small { display: block; font-size: 13px; color: var(--redam); }
+.sapa b { font-size: 16px; }
+
+.cari { display: flex; align-items: center; gap: 10px; height: 50px; margin-top: 18px; padding: 0 16px; border-radius: 25px; background: var(--kartu); }
+.cari input { flex: 1; min-width: 0; border: 0; background: transparent; outline: 0; font-size: 15px; }
+
+.chips { display: flex; gap: 8px; margin-top: 14px; overflow-x: auto; }
+.chip { height: 40px; padding: 0 16px; border-radius: 20px; border: 1px solid var(--garis); background: transparent; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.chip.a { background: var(--kuning); border-color: var(--kuning); }
+
+/* Kartu tenggat terdekat (geser samping) */
+.kartu { display: flex; gap: 12px; margin: 16px -20px 0; padding: 0 20px; overflow-x: auto; }
+.kt { flex: none; width: 210px; height: 140px; padding: 16px; border-radius: 24px; background: var(--kuning); display: flex; flex-direction: column; justify-content: space-between; }
+.kt.hijau { background: var(--hijau); color: #fff; }
+.kt.gelap { background: var(--tinta); color: var(--kuning); }
+.lencana { align-self: flex-start; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 10px; background: var(--tinta); color: var(--kuning); }
+.kt.hijau .lencana { background: #ffffff30; color: #fff; }
+.kt.gelap .lencana { background: #F5B92133; }
+.kt b { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 18px; line-height: 1.2; font-weight: 800; }
+.kt small { display: block; margin-top: 6px; font-size: 12px; font-weight: 500; }
+
+.seksi { margin: 20px 0 0; font-size: 17px; font-weight: 700; }
+.seksi-baris { display: flex; justify-content: space-between; align-items: baseline; }
+.seksi-baris small { font-size: 13px; font-weight: 600; color: var(--redam); }
+.daftar { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.kosong { margin: 0; padding: 24px 8px; text-align: center; color: var(--redam); }
+
+.baris { display: flex; align-items: center; gap: 12px; min-height: 54px; padding: 10px 14px; border-radius: 18px; background: var(--kartu); }
+.ck { width: 24px; height: 24px; flex: none; padding: 0; border-radius: 8px; border: 2px solid var(--tinta); background: transparent; display: grid; place-items: center; }
+.ck.d { background: var(--hijau); border-color: var(--hijau); }
+.isi { flex: 1; min-width: 0; }
+.isi b { display: block; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.isi small { display: block; font-size: 12px; color: var(--redam); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.coret { text-decoration: line-through; color: var(--redam); }
+small.telat { color: var(--merah); font-weight: 600; }
+.hapus { border: 0; background: transparent; padding: 4px 6px; font-size: 22px; line-height: 1; color: var(--redam); }
+
+/* ===== Jadwal ===== */
+.bar { display: flex; align-items: center; justify-content: space-between; }
+.bar b { font-size: 17px; }
+.ib { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--kartu); display: grid; place-items: center; }
+.tajuk { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; }
+.tajuk h1 { margin: 0; font-size: 28px; }
+.bln { display: flex; gap: 8px; }
+.minggu, .kal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.minggu { margin-top: 20px; text-align: center; }
+.kal { margin-top: 8px; }
+.d1 { height: 40px; border: 0; border-radius: 12px; background: var(--sel); font-size: 14px; font-weight: 600; }
+.d1.f { background: transparent; color: #8A857A; }
+.d1.m { background: var(--kuning); }
+.d1.t { background: var(--tinta); color: var(--kuning); }
+.d1.p { box-shadow: 0 0 0 2px var(--tinta); }
+.waktu { display: flex; align-items: center; gap: 12px; }
+.waktu time { width: 48px; font-size: 13px; font-weight: 700; }
+.agenda { flex: 1; min-width: 0; padding: 10px 14px; background: var(--kartu); border-left: 6px solid var(--w); border-radius: 6px 18px 18px 6px; }
+.agenda b { display: block; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.agenda small { display: block; font-size: 12px; color: var(--redam); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ===== Form tugas baru ===== */
+.blok { display: block; margin-top: 18px; }
+.in { display: block; width: 100%; height: 52px; margin-top: 8px; padding: 0 16px; border: 0; border-radius: 16px; background: var(--kartu); outline: 0; font-size: 15px; font-weight: 600; text-transform: none; letter-spacing: 0; }
+.in:focus-visible { box-shadow: 0 0 0 2px var(--tinta); }
+textarea.in { height: 84px; padding: 14px 16px; resize: none; font-size: 14px; font-weight: 400; }
+.dua { display: flex; gap: 10px; }
+.dua > label { flex: 1; min-width: 0; }
+.pilih { display: flex; gap: 8px; margin-top: 8px; }
+.seg { gap: 4px; padding: 4px; border-radius: 24px; background: var(--sel); }
+.seg .chip { flex: 1; border: 0; }
+.seg .chip.a { background: var(--tinta); color: var(--kuning); }
+.galat { margin: 6px 0 0; font-size: 13px; font-weight: 600; color: var(--merah); }
+.simpan {
+  position: fixed; left: 20px; right: 20px; max-width: 440px; margin: 0 auto;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  height: 56px; border: 0; border-radius: 28px; background: var(--kuning); font-size: 16px; font-weight: 700;
+}
+
+/* ===== Navigasi bawah ===== */
+.nav {
+  position: fixed; left: 20px; right: 20px; max-width: 440px; margin: 0 auto;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  height: 64px; padding: 0 10px; border-radius: 32px; background: var(--tinta); color: #D9D4C7;
+  display: flex; align-items: center; justify-content: space-around;
+}
+.nb { width: 46px; height: 46px; border: 0; border-radius: 50%; background: transparent; color: inherit; display: grid; place-items: center; }
+.nb.on { background: #4A4944; color: var(--kuning); }
+.plus { width: 52px; height: 52px; border: 0; border-radius: 18px; background: var(--kuning); color: var(--tinta); display: grid; place-items: center; }
+body[data-layar="tambah"] .nav { display: none; } /* di form, nav diganti tombol Simpan */
